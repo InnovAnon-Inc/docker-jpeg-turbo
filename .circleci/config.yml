@@ -78,5 +78,15 @@ jobs:
                 --header 'Content-Type: application/json' \
                 -u "${DEUTEX_API_TOKEN}:"
             fi
+      - run:
+          name: Push upstream (docker-sdl)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl --location --request POST \
+                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/docker-sdl/pipeline' \
+                --header 'Content-Type: application/json' \
+                -u "${SDL_API_TOKEN}:"
+            fi
+
 
 
