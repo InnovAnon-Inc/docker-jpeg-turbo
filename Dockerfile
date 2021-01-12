@@ -33,6 +33,8 @@ RUN sleep 31 \
  && strip.sh .                                         \
  && tar acf       ../jpeg-turbo.txz .                  \
  && rm -rf         $LFS/sources/libjpeg-turbo
+# TODO
+#      "${CONFIG_OPTS[@]}"                 \
 
 FROM scratch as final
 COPY --from=jpeg-turbo /tmp/jpeg-turbo.txz /tmp/
