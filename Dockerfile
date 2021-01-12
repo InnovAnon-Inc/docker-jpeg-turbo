@@ -14,6 +14,7 @@ RUN cat   /tmp/*.txz  \
 #                             /tmp/xz.txz
 FROM builder-01 as jpeg-turbo
 USER lfs
+# TODO disable shared, enable static
 RUN sleep 31 \
  && git clone --depth=1 --recursive \
       https://github.com/libjpeg-turbo/libjpeg-turbo.git \
