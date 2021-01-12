@@ -5,7 +5,8 @@ COPY --from=innovanon/bzip2  /tmp/bzip2.txz  /tmp/
 COPY --from=innovanon/xz     /tmp/xz.txz     /tmp/
 RUN cat   /tmp/*.txz  \
   | tar Jxf - -i -C / \
- && rm -v /tmp/*.txz
+ && rm -v /tmp/*.txz  \
+ && ldconfig
 #RUN tar xf                   /tmp/zlib.txz   -C / \
 # && tar xf                   /tmp/bzip2.txz  -C / \
 # && tar xf                   /tmp/xz.txz     -C / \
@@ -28,6 +29,7 @@ RUN sleep 31 \
  && DESTDIR=/tmp/jpeg-turbo                            \
     cmake --build build --target install               \
  && cd          /tmp/jpeg-turbo                        \
+ && strip.sh .                                         \
  && tar acf       ../jpeg-turbo.txz .                  \
  && rm -rf         $LFS/sources/libjpeg-turbo
 
