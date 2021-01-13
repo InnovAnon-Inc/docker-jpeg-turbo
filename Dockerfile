@@ -23,7 +23,7 @@ RUN sleep 31 \
     cmake --build build --target install               \
  && cd          /tmp/jpeg-turbo                        \
  && strip.sh .                                         \
- && tar acf       ../jpeg-turbo.txz .                  \
+ && tar  pacf       ../jpeg-turbo.txz .                  \
  && rm -rf         $LFS/sources/libjpeg-turbo
 # TODO
 #      "${CONFIG_OPTS[@]}"                 \
